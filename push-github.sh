@@ -1,12 +1,13 @@
 #!/bin/bash
 
-git add .
+SSHKEY_FILE="/home/t3ngr1/.ssh/linuxdevopsturkiye"
 
-sleep 2
-git config user.name LinuxDevOpsTÜRKİYE
-git config user.email linuxdevopsturkiye@gmail.com
+ssh-agent bash -c 'ssh-add '"$SSHKEY_FILE"'; git config --global user.name "linuxdevopsturkiye"'
 
-sleep 2
+ssh-agent bash -c 'ssh-add '"$SSHKEY_FILE"'; git config --global user.email "linuxdevopsturkiye@gmail.com"'
 
-git commit -m "yeni içerik eklendi."
-git push -u origin
+ssh-agent bash -c 'ssh-add '"$SSHKEY_FILE"'; git add --all'
+
+ssh-agent bash -c 'ssh-add '"$SSHKEY_FILE"'; git commit -m "oto commit script"'
+
+ssh-agent bash -c 'ssh-add '"$SSHKEY_FILE"'; git push'
